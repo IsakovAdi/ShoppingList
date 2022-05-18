@@ -1,6 +1,6 @@
 package com.example.shoppinglist.domain.usecases
 
-import com.example.shoppinglist.domain.ShopItem
+import com.example.shoppinglist.domain.models.ShopItem
 import com.example.shoppinglist.domain.interfaces.ShopListRepository
 
 class AddShopItemUseCase(private val shopListRepository: ShopListRepository) {

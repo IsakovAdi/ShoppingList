@@ -3,9 +3,9 @@ package com.example.shoppinglist.presentation.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.example.shoppinglist.R
-import com.example.shoppinglist.domain.ShopItem
-import com.example.shoppinglist.presentation.ShopItemDiffCallback
-import com.example.shoppinglist.presentation.ShopItemViewHolder
+import com.example.shoppinglist.domain.models.ShopItem
+import com.example.shoppinglist.presentation.callbacks.ShopItemDiffCallback
+import com.example.shoppinglist.presentation.viewholders.ShopItemViewHolder
 
 //////////////////////////////////////////////////////////////////////////////
 //class ShopListAdapter : RecyclerView.Adapter<ShopListAdapter.Holder>() {

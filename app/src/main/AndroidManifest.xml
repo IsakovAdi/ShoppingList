@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ShoppingList">
         <activity
-            android:name=".presentation.MainActivity"
+            android:name=".presentation.activities.shopItemActivity.ShopItemActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.activities.mainactivity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
