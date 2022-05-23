@@ -16,7 +16,7 @@ object ShopListRepositoryImpl : ShopListRepository {
 
     init {
         for (i in 0 until 20){
-            val item = ShopItem("Name$i", i, true, i)
+            val item = ShopItem("Name$i", i, true)
             Log.d("itemAdd", i.toString())
             addShopItem(item)
         }
