@@ -16,7 +16,7 @@ import com.example.shoppinglist.presentation.fragments.ShopItemFragment
 import com.google.android.material.textfield.TextInputLayout
 import kotlin.concurrent.thread
 
-class ShopItemActivity : AppCompatActivity() {
+class ShopItemActivity : AppCompatActivity() , ShopItemFragment.OnEditingFinishedListener {
 
     private lateinit var viewModel: ShopItemActivityVM
     private lateinit var tilName: TextInputLayout
@@ -166,6 +166,10 @@ class ShopItemActivity : AppCompatActivity() {
             intent.putExtra(EXTRA_SHOP_ITEM_ID, shopItemId)
             return intent
         }
+    }
+
+    override fun onEdititingFinished() {
+        finish()
     }
 
 }

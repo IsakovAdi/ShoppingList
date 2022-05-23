@@ -1,5 +1,6 @@
 package com.example.shoppinglist.presentation.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -12,12 +13,15 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.shoppinglist.R
 import com.example.shoppinglist.domain.models.ShopItem
+import com.example.shoppinglist.presentation.activities.mainactivity.MainActivity
 import com.example.shoppinglist.presentation.activities.shopItemActivity.ShopItemActivityVM
 import com.google.android.material.textfield.TextInputLayout
 
 class ShopItemFragment : Fragment() {
 
     private lateinit var viewModel: ShopItemActivityVM
+    private lateinit var onEditingFinishedListener:OnEditingFinishedListener
+
     private lateinit var tilName: TextInputLayout
     private lateinit var tilCount: TextInputLayout
     private lateinit var etName: EditText
@@ -25,6 +29,17 @@ class ShopItemFragment : Fragment() {
     private lateinit var buttonSave: Button
     private var screenMode: String = MODE_UNKNOWN
     private var shopItemId: Int = ShopItem.UNDEFINED_ID
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is OnEditingFinishedListener){
+            onEditingFinishedListener = context
+        }
+        else{
+            throw RuntimeException("Activity must implement OnEditingFinishedListener")
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,8 +83,9 @@ class ShopItemFragment : Fragment() {
         }
 
         viewModel.shouldCloseActivity.observe(viewLifecycleOwner) {
-            activity?.onBackPressed()   //возвращает нулабельный объект, и ее нужно проверить на  null
+//            activity?.onBackPressed()   //возвращает нулабельный объект, и ее нужно проверить на  null
 //            requireActivity().onBackPressed()       // возвращает не нулабельный объект и она не нуждается в проверке,
+            onEditingFinishedListener.onEdititingFinished()
         }
     }
 
@@ -145,6 +161,10 @@ class ShopItemFragment : Fragment() {
         etName = view.findViewById(R.id.et_name)
         etCount = view.findViewById(R.id.et_count)
         buttonSave = view.findViewById(R.id.save_button)
+    }
+
+    interface OnEditingFinishedListener{
+        fun onEdititingFinished()
     }
 
     companion object {
