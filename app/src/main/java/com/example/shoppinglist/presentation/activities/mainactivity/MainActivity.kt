@@ -11,10 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
 import com.example.shoppinglist.presentation.activities.shopItemActivity.ShopItemActivity
 import com.example.shoppinglist.presentation.adapters.ShopListAdapter
-import com.example.shoppinglist.presentation.fragments.ShopItemFragment
+import com.example.shoppinglist.presentation.fragments.ShoppItemFragment
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedListener {
+class MainActivity : AppCompatActivity(), ShoppItemFragment.OnEditingFinishedListener {
     private lateinit var shopListAdapter: ShopListAdapter
     private lateinit var viewModel: MainViewModel
     private var shopItemContainer: FragmentContainerView? = null
@@ -35,12 +35,12 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
                 val intent = ShopItemActivity.newIntentAddItem(this)
                 startActivity(intent)
             } else {
-                launchFragment(ShopItemFragment.newInstanceAddShopItem())
+                launchFragment(ShoppItemFragment.newInstanceAddShopItem())
             }
         }
     }
 
-    override fun onEdititingFinished() {
+    override fun onEditingFinished() {
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
         supportFragmentManager.popBackStack()
     }
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
                 val intent = ShopItemActivity.newIntentEditItem(this, it.id)
                 startActivity(intent)
             } else{
-                launchFragment(ShopItemFragment.newInstanceEditShopItem(it.id))
+                launchFragment(ShoppItemFragment.newInstanceEditShopItem(it.id))
             }
         }
     }
@@ -116,6 +116,7 @@ class MainActivity : AppCompatActivity(), ShopItemFragment.OnEditingFinishedList
             viewModel.changeEnabledState(it)
         }
     }
+
 
 
 

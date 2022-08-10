@@ -7,4 +7,4 @@
     android:layout_height="match_parent"
     android:id="@+id/shop_item_container"
     tools:context=".presentation.activities.shopItemActivity.ShopItemActivity"
-    tools:layout="@layout/fragment_shop_item" />
+    tools:layout="@layout/fragment_shopp_item" />
